@@ -54,9 +54,9 @@ def display_header():
         print(line)
       
     # Versi dan URL
-    print(f"{Fore.WHITE}{Style.BRIGHT}{' ' * 57}v.1.0")
+    print(f"{Fore.WHITE}{Style.BRIGHT}{' ' * 47}v.1.0")
     print(f"{Fore.CYAN}{Style.BRIGHT}{' ' * 16}https://github.com/Kodekeras24/HDR-DD0S.git")
-    print(f"{Fore.CYAN}|{'=' * 74}|")
+    print(f"{Fore.CYAN}|{'=' * 54}|")
 
 # Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
 def get_user_input(prompt_message):
