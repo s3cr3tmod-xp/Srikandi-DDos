@@ -36,7 +36,6 @@ def log_attack_status(message, level='info', print_to_terminal=True):
       
 
 # Fungsi untuk Menampilkan Header HUDAIRUL-AQSHA dengan Warna
-attemps = 0
 def display_header():
     header_lines = [
     f"{Fore.BLUE}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
@@ -110,19 +109,20 @@ if __name__ == "__main__":
     display_header()
 
     # Prompt untuk input dari pengguna dengan tampilan yang rapi
-  while attemps < 100:
-    print("\033[38;5;39m┌[Black-Army•••")
-    username = input("└> Enter your username: \033[32m")
-    print("\033[38;5;39m┌[Black-Army•••")
-    password = input("└> Enter your password: \033[32m")
-    print("\033[104m\033[0m")
-    if username == 'srk313' and password == 'srk313':
-        print("\033[7m•••>       SRIKANDI BLACK ARMY\033[0m")
-        break
-    else:
-        print('Incorrect credentials. Check if you have Caps lock on and try again.')
-        attemps += 1
-        continue
+  attemps = 0
+    while attemps < 100:
+       print("\033[38;5;39m┌[Black-Army•••")
+       username = input("└> Enter your username: \033[32m")
+       print("\033[38;5;39m┌[Black-Army•••")
+       password = input("└> Enter your password: \033[32m")
+       print("\033[104m\033[0m")
+       if username == 'srk313' and password == 'srk313':
+           print("\033[7m•••>       SRIKANDI BLACK ARMY\033[0m")
+           break
+       else:
+           print('Incorrect credentials. Check if you have Caps lock on and try again.')
+           attemps += 1
+           continue
       
     target_url = get_user_input("Masukkan target URL:   ")
     while not validators.url(target_url):
