@@ -41,11 +41,11 @@ def log_attack_status(message, level='info', print_to_terminal=True):
 def display_header():
     header_lines = [
     f"{Fore.BLUE}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
-    f"{Fore.BLUE}▒▒▒█████╗",
+    f"{Fore.BLUE}▒▒█████╗",
     f"{Fore.BLUE}▒▒██╔═══╝",
     f"{Fore.BLUE}▒▒██║",
-    f"{Fore.BLUE}▒▒▒█████╗",
-    f"{Fore.BLUE}▒▒╚═══██║",
+    f"{Fore.BLUE}▒▒█████╗",
+    f"{Fore.BLUE}▒▒╚══██║",
     f"{Fore.BLUE}▒▒█████╔╝",
     f"{Fore.BLUE}▒▒╚════╝",
     f"{Fore.BLUE} ▒▒▒▒═══╗▒▒▒▒╔═════╗▒▒▒╔════════╗▒▒╔════════╗▒╔═╗▒▒▒▒▒▒╔═╗▒▒▒▒╔═╗▒▒▒▒",
@@ -56,9 +56,11 @@ def display_header():
         print(line)
       
     # Versi dan URL
-    print(f"{Fore.WHITE}{Style.BRIGHT}{' ' * 47}v.1.0")
-    print(f"{Fore.CYAN}{Style.BRIGHT}{' ' * 16}https://github.com/Kodekeras24/HDR-DD0S.git")
-    print(f"{Fore.CYAN}╚{'═' * 54}╝")
+    print(f"{Fore.CYAN}╔{'═' * 65}╗")
+    print(f"{Fore.WHITE}{'' * 20}Author: KunFz{' ' * 27}")
+    print(f"{Fore.CYAN}{' ' * 16}Adm: Z'black 313{' ' * 47} ")
+    print(f"{Fore.CYAN}{Style.BRIGHT}{' ' * 16}Black-Army community{' ' * 47}")
+    print(f"{Fore.CYAN}╚{'═' * 65}╝")
 
 # Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
 def get_user_input(prompt_message):
