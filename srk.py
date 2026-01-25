@@ -64,10 +64,9 @@ def display_header():
 
 # Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
 def get_user_input(prompt_message):
-    print(f"{Fore.GREEN}╔{' ' * 4}╗")
-    print(f"{Fore.GREEN}║[?] {prompt_message.ljust(63)}║")
-    print(f"{Fore.GREEN}╚{'═' * 65}╝")
-    return input(f"{Fore.YELLOW}{' ' * 4}> ").strip()
+    
+    print(f"{Fore.GREEN}[?] {prompt_message.")
+    return input(f"{Fore.YELLOW}{' ' * 4}┗> ").strip()
 
 # Fungsi Countdown untuk Menampilkan Waktu Serangan
 def countdown(t):
@@ -123,6 +122,7 @@ if __name__ == "__main__":
        print("\033[104m\033[0m")
        if username == 'srk313' and password == 'srk313':
            print("\033[7m•••>       SRIKANDI BLACK ARMY\033[0m")
+           print(f"{Fore.YELLOW}┏━━━━━━━⬣")
            break
        else:
            print('Incorrect credentials. Check if you have Caps lock on and try again.')
