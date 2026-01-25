@@ -76,7 +76,7 @@ def countdown(t):
         if remaining_time > 1:
             time.sleep(1),
             stdout.flush()
-            stdout.write(f"\r{Fore.WHITE}* {Fore.GREEN}Remaining_time: {remaining_time:.2f} {Fore.BLUE}Executing target {Fore.YELLOW}" +str(url)+ "")
+            stdout.write(f"\r{Fore.WHITE}* {Fore.GREEN}Remaining_time: {remaining_time:.2f} {Fore.BLUE}Executing target {Fore.YELLOW}" +str(prompt_message)+ "")
         else:
             stdout.flush()
             stdout.write(f"\r{Fore.RED}|  [*]  {Fore.YELLOW}חודאירול אקשה    {Fore.CYAN}התקפה נעשתה!{' ' * 53}|\n")
