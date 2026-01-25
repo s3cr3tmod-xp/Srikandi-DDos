@@ -39,10 +39,10 @@ def log_attack_status(message, level='info', print_to_terminal=True):
 attemps = 0
 def display_header():
     header_lines = [
-f"{Fore.LIGTHBLUE_EX}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
-f"{Fore.LIGTHBLUE_EX} ▒▒▒▒╔═══════╗▒▒▒▒╔═════╗▒▒▒╔════════╗▒▒╔════════╗▒╔═╗▒▒▒▒▒▒╔═╗▒▒▒▒╔═╗▒▒▒▒╚═══════╝║█████╗",
-f"{Fore.LIGTHBLUE_EX} ", 
-f"{Fore.LIGTHBLUE_EX}",
+print(f"{Fore.LIGTHBLUE_EX}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
+print(f"{Fore.LIGTHBLUE_EX} ▒▒▒▒╔═══════╗▒▒▒▒╔═════╗▒▒▒╔════════╗▒▒╔════════╗▒╔═╗▒▒▒▒▒▒╔═╗▒▒▒▒╔═╗▒▒▒▒╚═══════╝║█████╗",
+print(f"{Fore.LIGTHBLUE_EX} ", 
+print(f"{Fore.LIGTHBLUE_EX}",
 f"{Fore.LIGTHBLUE_EX}",
 f"{Fore.LIGTHBLUE_EX}",
 f"{Fore.LIGTHBLUE_EX}",
