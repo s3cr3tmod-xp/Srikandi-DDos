@@ -1,4 +1,4 @@
 requests
 asyncio
-aiohttp
+validators
 colorama
