@@ -76,7 +76,7 @@ def countdown(t):
         if remaining_time > 1:
             time.sleep(1),
             stdout.flush()
-            stdout.write(f"\r{Fore.YELLOW}Remaining_time: {remaining_time:.2f}")
+            stdout.write(f"\r{Fore.WHITE}* {Fore.GREEN}Remaining_time: {remaining_time:.2f} {Fore.BLUE}Executing target {Fore.YELLOW}" +str(url)+ ")
         else:
             stdout.flush()
             stdout.write(f"\r{Fore.RED}|  [*]  {Fore.YELLOW}חודאירול אקשה    {Fore.CYAN}התקפה נעשתה!{' ' * 53}|\n")
@@ -127,14 +127,14 @@ if __name__ == "__main__":
            attemps += 1
            continue
       
-    target_url = get_user_input("Masukkan target URL:   ")
+    target_url = get_user_input("Enter the target url:   ")
     while not validators.url(target_url):
-        print(f"{Fore.RED}|    [ERROR] URL tidak valid. Coba lagi.{' ' * 37}|")
+        print(f"{Fore.RED}| [ERROR] URL tidak valid. Coba lagi.{' ' * 37}|")
         print(f"{Fore.CYAN}|{'=' * 74}|")
         target_url = get_user_input("  Server URL:")
 
     try:
-        attack_duration = int(get_user_input("║  Duration (second):"))
+        attack_duration = int(get_user_input("Enter the duration (second):"))
     except ValueError:
         attack_duration = 60  # Default durasi
 
