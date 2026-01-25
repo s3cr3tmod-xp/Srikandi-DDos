@@ -10,12 +10,14 @@ from sys import stdout
 from colorama import Fore, Style, init
 import logging 
 import time
-# Inisialisasi Colorama dan Logging                                                                                                        init(autoreset=True)
-                                                                                                                                           # Pengaturan Logging yang benar
+# Inisialisasi Colorama dan Logging  
+init(autoreset=True)
+# Pengaturan Logging yang benar
 logging.basicConfig(
     filename='attack.log',
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',  # Perbaiki dari levellevel menjadi levelname                                          datefmt='%Y-%m-%d %H:%M:%S'
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Perbaiki dari levellevel menjadi levelname 
+  datefmt='%Y-%m-%d %H:%M:%S'
 )
 
 # Fungsi untuk Logging Informasi Serangan
@@ -39,14 +41,14 @@ def log_attack_status(message, level='info', print_to_terminal=True):
 def display_header():
     header_lines = [
     f"{Fore.BLUE}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
-    f"{Fore.BLUE} ▒▒▒▒╔═══════╗▒▒▒▒╔═════╗▒▒▒╔════════╗▒▒╔════════╗▒╔═╗▒▒▒▒▒▒╔═╗▒▒▒▒╔═╗▒▒▒▒╚═══════╝║█████╗",
-    f"{Fore.BLUE}",
-    f"{Fore.BLUE}",
-    f"{Fore.BLUE}",
-    f"{Fore.BLUE}",
-    f"{Fore.BLUE}",
-    f"{Fore.BLUE}",
-    f"{Fore.BLUE}",
+    f"{Fore.BLUE}▒▒▒█████╗",
+    f"{Fore.BLUE}▒▒██╔═══╝",
+    f"{Fore.BLUE}▒▒██║",
+    f"{Fore.BLUE}▒▒▒█████╗",
+    f"{Fore.BLUE}▒▒╚═══██║",
+    f"{Fore.BLUE}▒▒█████╔╝",
+    f"{Fore.BLUE}▒▒╚════╝",
+    f"{Fore.BLUE} ▒▒▒▒═══╗▒▒▒▒╔═════╗▒▒▒╔════════╗▒▒╔════════╗▒╔═╗▒▒▒▒▒▒╔═╗▒▒▒▒╔═╗▒▒▒▒",
     ]
 
     # Tampilkan header dengan warna
@@ -56,7 +58,7 @@ def display_header():
     # Versi dan URL
     print(f"{Fore.WHITE}{Style.BRIGHT}{' ' * 47}v.1.0")
     print(f"{Fore.CYAN}{Style.BRIGHT}{' ' * 16}https://github.com/Kodekeras24/HDR-DD0S.git")
-    print(f"{Fore.CYAN}|{'=' * 54}|")
+    print(f"{Fore.CYAN}╚{'═' * 54}╝")
 
 # Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
 def get_user_input(prompt_message):
@@ -109,7 +111,7 @@ if __name__ == "__main__":
     display_header()
 
     # Prompt untuk input dari pengguna dengan tampilan yang rapi
-  attemps = 0
+    attemps = 0
     while attemps < 100:
        print("\033[38;5;39m┌[Black-Army•••")
        username = input("└> Enter your username: \033[32m")
