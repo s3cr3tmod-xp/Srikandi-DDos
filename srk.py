@@ -40,6 +40,10 @@ def display_header():
     header_lines = [
         
     ]
+
+    # Tampilkan header dengan warna
+    for line in header_lines:
+        print(line)
 while attemps < 100:
     print("\033[104m┌[Black-Army•••")
     username = input("└> Enter your username: \033[32m")
@@ -53,10 +57,6 @@ while attemps < 100:
         print('Incorrect credentials. Check if you have Caps lock on and try again.')
         attemps += 1
         continue
-
-    # Tampilkan header dengan warna
-    for line in header_lines:
-        print(line)
 
     # Versi dan URL
     print(f"{Fore.WHITE}{Style.BRIGHT}{' ' * 57}v.1.0")
