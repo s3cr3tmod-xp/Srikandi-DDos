@@ -76,7 +76,7 @@ def countdown(t):
         if remaining_time > 1:
             time.sleep(1),
             stdout.flush()
-            stdout.write(f"\r{Fore.BLUE} Carry out execution {Fore.YELLOW}{target['host']} {Fore.CYAN} {target['port']}{Fore.RED}{target['uri']} {Fore.BLUE}{remaining_time:.2f} {' ' * 26}|")
+            stdout.write(f"\r{Fore.BLUE} Carry out execution {Fore.YELLOW}{host} {Fore.CYAN} {port}{Fore.RED}{uri} {Fore.BLUE}{remaining_time:.2f} {' ' * 26}")
         else:
             stdout.flush()
             stdout.write(f"\r{Fore.RED}|  [*]  {Fore.YELLOW}חודאירול אקשה    {Fore.CYAN}התקפה נעשתה!{' ' * 53}|\n")
