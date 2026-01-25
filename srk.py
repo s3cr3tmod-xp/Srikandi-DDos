@@ -53,20 +53,7 @@ def display_header():
     # Tampilkan header dengan warna
     for line in header_lines:
         print(line)
-while attemps < 100:
-    print("\033[38;5;39m┌[Black-Army•••")
-    username = input("└> Enter your username: \033[32m")
-    print("\033[38;5;39m┌[Black-Army•••")
-    password = input("└> Enter your password: \033[32m")
-    print("\033[104m\033[0m")
-    if username == 'srk313' and password == 'srk313':
-        print("\033[7m•••>       SRIKANDI BLACK ARMY\033[0m")
-        break
-    else:
-        print('Incorrect credentials. Check if you have Caps lock on and try again.')
-        attemps += 1
-        continue
-
+      
     # Versi dan URL
     print(f"{Fore.WHITE}{Style.BRIGHT}{' ' * 57}v.1.0")
     print(f"{Fore.CYAN}{Style.BRIGHT}{' ' * 16}https://github.com/Kodekeras24/HDR-DD0S.git")
@@ -123,6 +110,20 @@ if __name__ == "__main__":
     display_header()
 
     # Prompt untuk input dari pengguna dengan tampilan yang rapi
+  while attemps < 100:
+    print("\033[38;5;39m┌[Black-Army•••")
+    username = input("└> Enter your username: \033[32m")
+    print("\033[38;5;39m┌[Black-Army•••")
+    password = input("└> Enter your password: \033[32m")
+    print("\033[104m\033[0m")
+    if username == 'srk313' and password == 'srk313':
+        print("\033[7m•••>       SRIKANDI BLACK ARMY\033[0m")
+        break
+    else:
+        print('Incorrect credentials. Check if you have Caps lock on and try again.')
+        attemps += 1
+        continue
+      
     target_url = get_user_input("Masukkan target URL:   ")
     while not validators.url(target_url):
         print(f"{Fore.RED}|    [ERROR] URL tidak valid. Coba lagi.{' ' * 37}|")
