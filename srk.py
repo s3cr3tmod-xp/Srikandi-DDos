@@ -66,7 +66,7 @@ def display_header():
 def get_user_input(prompt_message):
     
     print(f"{Fore.GREEN}[?] {prompt_message.")
-    return input(f"{Fore.YELLOW}{' ' * 4}┗> ").strip()
+    return input(f"{Fore.YELLOW}┗> ").strip()
 
 # Fungsi Countdown untuk Menampilkan Waktu Serangan
 def countdown(t):
@@ -133,10 +133,10 @@ if __name__ == "__main__":
     while not validators.url(target_url):
         print(f"{Fore.RED}|    [ERROR] URL tidak valid. Coba lagi.{' ' * 37}|")
         print(f"{Fore.CYAN}|{'=' * 74}|")
-        target_url = get_user_input("Masukkan target URL:")
+        target_url = get_user_input("║  Server URL:")
 
     try:
-        attack_duration = int(get_user_input("Masukkan durasi serangan (detik):"))
+        attack_duration = int(get_user_input("║  Duration (second):"))
     except ValueError:
         attack_duration = 60  # Default durasi
 
