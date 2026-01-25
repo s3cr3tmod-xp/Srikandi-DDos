@@ -36,8 +36,11 @@ def log_attack_status(message, level='info', print_to_terminal=True):
       
 
 # Fungsi untuk Menampilkan Header HUDAIRUL-AQSHA dengan Warna
+attemps = 0
 def display_header():
     header_lines = [
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒▒╔═══════╗▒▒▒▒╔═════╗▒▒▒╔════════╗▒▒╔════════╗▒╔═╗▒▒▒▒▒▒╔═╗▒▒▒▒╔═╗▒▒▒▒╚═══════╝║█████╗
         
     ]
 
@@ -45,9 +48,9 @@ def display_header():
     for line in header_lines:
         print(line)
 while attemps < 100:
-    print("\033[104m┌[Black-Army•••")
+    print("\033[38;5;39m┌[Black-Army•••")
     username = input("└> Enter your username: \033[32m")
-    print("\033[104m┌[Black-Army•••")
+    print("\033[38;5;39m┌[Black-Army•••")
     password = input("└> Enter your password: \033[32m")
     print("\033[104m\033[0m")
     if username == 'srk313' and password == 'srk313':
