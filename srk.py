@@ -77,7 +77,7 @@ def countdown(t):
             time.sleep(1),
             stdout.flush()
             stdout.write(f"\r{Fore.RED}* {Fore.BLUE}Executing target {Fore.YELLOW} {target_url}") 
-            stdout.write(f"\r{Fore.WHITE} {Fore.PURPLE} Remaining_time: {Dore.BLUE} {remaining_time:.2f}")
+            print(f"\r{Fore.WHITE}* {Fore.PURPLE} Remaining_time: {Dore.BLUE} {remaining_time:.2f}")
         else:
             stdout.flush()
             stdout.write(f"\r{Fore.RED}|  [*]  {Fore.YELLOW}חודאירול אקשה    {Fore.CYAN}התקפה נעשתה!{' ' * 53}|\n")
