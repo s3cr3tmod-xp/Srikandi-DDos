@@ -65,8 +65,8 @@ def display_header():
 # Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
 def get_user_input(prompt_message):
     
-    print(f"{Fore.GREEN}║[?] {prompt_message}")
-    return input(f"{Fore.GREEN}┗━━━> ").strip()
+    print(f"{Fore.WHITE}║[?] {prompt_message}")
+    return input(f"{Fore.BLUE}┗━━━> ").strip()
 
 # Fungsi Countdown untuk Menampilkan Waktu Serangan
 def countdown(t):
@@ -76,7 +76,8 @@ def countdown(t):
         if remaining_time > 1:
             time.sleep(1),
             stdout.flush()
-            stdout.write(f"\r{Fore.WHITE}* {Fore.BLUE}Executing target {Fore.YELLOW} {target_url} {Fore.GREEN}Remaining_time: {remaining_time:.2f}")
+            stdout.write(f"\r{Fore.RED}* {Fore.BLUE}Executing target {Fore.YELLOW} {target_url}") 
+            stdout.write(f"\r{Fore.WHITE} {Fore.PURPLE} Remaining_time: {Dore.BLUE} {remaining_time:.2f}")
         else:
             stdout.flush()
             stdout.write(f"\r{Fore.RED}|  [*]  {Fore.YELLOW}חודאירול אקשה    {Fore.CYAN}התקפה נעשתה!{' ' * 53}|\n")
@@ -120,7 +121,7 @@ if __name__ == "__main__":
        print("\033[104m\033[0m")
        if username == 'srk313' and password == 'srk313':
            print("\033[7m•••>       SRIKANDI BLACK ARMY\033[0m")
-           print(f"{Fore.GREEN}┏━━━━━━━⬣")
+           print(f"{Fore.BLUE}┏━━━━━━━⬣")
            break
        else:
            print('Incorrect credentials. Check if you have Caps lock on and try again.')
@@ -129,7 +130,7 @@ if __name__ == "__main__":
       
     target_url = get_user_input("Enter the target url:   ")
     while not validators.url(target_url):
-        print(f"{Fore.RED}| [ERROR] URL tidak valid. Coba lagi.{' ' * 37}|")
+        print(f"{Fore.RED}|[ERROR] URL tidak valid. Coba lagi.{' ' * 37}|")
         print(f"{Fore.CYAN}|{'=' * 74}|")
         target_url = get_user_input("  Server URL:")
 
