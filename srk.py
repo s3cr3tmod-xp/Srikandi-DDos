@@ -65,8 +65,8 @@ def display_header():
 # Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
 def get_user_input(prompt_message):
     
-    print(f"{Fore.GREEN}[?] {prompt_message}")
-    return input(f"{Fore.YELLOW}┗> ").strip()
+    print(f"{Fore.YELLOW}║[?] {prompt_message}")
+    return input(f"{Fore.YELLOW}┗━━━> ").strip()
 
 # Fungsi Countdown untuk Menampilkan Waktu Serangan
 def countdown(t):
@@ -113,10 +113,10 @@ if __name__ == "__main__":
     # Prompt untuk input dari pengguna dengan tampilan yang rapi
     attemps = 0
     while attemps < 100:
-       print("\033[38;5;39m┌[Black-Army•••")
-       username = input("└> Enter your username: \033[32m")
-       print("\033[38;5;39m┌[Black-Army•••")
-       password = input("└> Enter your password: \033[32m")
+       print("\033[38;5;39m┏━━━━━━━⬣")
+       username = input("\033[38;5;39m┗> Enter your username: \033[32m")
+       print("\033[38;5;39m┏━━━━━━━⬣")
+       password = input("\033[38;5;39m┗> Enter your password: \033[32m")
        print("\033[104m\033[0m")
        if username == 'srk313' and password == 'srk313':
            print("\033[7m•••>       SRIKANDI BLACK ARMY\033[0m")
@@ -131,7 +131,7 @@ if __name__ == "__main__":
     while not validators.url(target_url):
         print(f"{Fore.RED}|    [ERROR] URL tidak valid. Coba lagi.{' ' * 37}|")
         print(f"{Fore.CYAN}|{'=' * 74}|")
-        target_url = get_user_input("║  Server URL:")
+        target_url = get_user_input("  Server URL:")
 
     try:
         attack_duration = int(get_user_input("║  Duration (second):"))
