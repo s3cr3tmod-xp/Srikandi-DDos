@@ -42,11 +42,11 @@ def display_header():
     header_lines = [
     f"{Fore.BLUE}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
     f"{Fore.BLUE}▒▒█████╗",
-    f"{Fore.BLUE}▒▒██╔═══╝",
+    f"{Fore.BLUE}▒▒██╔══╝",
     f"{Fore.BLUE}▒▒██║",
     f"{Fore.BLUE}▒▒█████╗",
     f"{Fore.BLUE}▒▒╚══██║",
-    f"{Fore.BLUE}▒▒█████╔╝",
+    f"{Fore.BLUE}▒▒█████║",
     f"{Fore.BLUE}▒▒╚════╝",
     f"{Fore.BLUE} ▒▒▒▒═══╗▒▒▒▒╔═════╗▒▒▒╔════════╗▒▒╔════════╗▒╔═╗▒▒▒▒▒▒╔═╗▒▒▒▒╔═╗▒▒▒▒",
     ]
@@ -57,15 +57,16 @@ def display_header():
       
     # Versi dan URL
     print(f"{Fore.CYAN}╔{'═' * 65}╗")
-    print(f"{Fore.WHITE}{'' * 20}Author: KunFz{' ' * 27}")
-    print(f"{Fore.CYAN}{' ' * 16}Adm: Z'black 313{' ' * 47} ")
-    print(f"{Fore.CYAN}{Style.BRIGHT}{' ' * 16}Black-Army community{' ' * 47}")
+    print(f"{Fore.CYAN}║{' ' * 20}Author: KunFz{' ' * 27}")
+    print(f"{Fore.CYAN}║{' ' * 16}Adm: Z'black 313{' ' * 47} ")
+    print(f"{Fore.CYAN}║{' ' * 16}Black-Army community{' ' * 47}")
     print(f"{Fore.CYAN}╚{'═' * 65}╝")
 
 # Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
 def get_user_input(prompt_message):
-    print(f"{Fore.GREEN}|{' ' * 4}[?] {prompt_message.ljust(63)}|")
-    print(f"{Fore.GREEN}|{'=' * 74}|")
+    print(f"{Fore.GREEN}╔{' ' * 4}╗")
+    print(f"{Fore.GREEN}║[?] {prompt_message.ljust(63)}║")
+    print(f"{Fore.GREEN}╚{'═' * 65}╝")
     return input(f"{Fore.YELLOW}{' ' * 4}> ").strip()
 
 # Fungsi Countdown untuk Menampilkan Waktu Serangan
