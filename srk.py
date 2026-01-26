@@ -56,11 +56,11 @@ def display_header():
         print(line)
       
     # Versi dan URL
-    print(f"{Fore.BLUE}╔{'═' * 67}╗")
-    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 26}\033[37mAuthor: KunFz{' ' * 27} {Fore.BLUE}\033[0m║")
-    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 25}\033[37mAdm: Z'black 313{' ' * 26} {Fore.BLUE}\033[0m║")
-    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 20}\033[37mCan be used but not shared{' ' * 21} {Fore.BLUE}\033[0m║")
-    print(f"{Fore.BLUE}╚{'═' * 67}╝")
+    print(f"{Fore.BLUE}╔{'═' * 68}╗")
+    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 27}\033[38;5;206mAuthor: KunFz{' ' * 27} {Fore.BLUE}\033[0m║")
+    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 25}\033[38;5;206mAdm: Z'black 313{' ' * 26} {Fore.BLUE}\033[0m║")
+    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 20}\033[38;5;206mCan be used but not shared{' ' * 21} {Fore.BLUE}\033[0m║")
+    print(f"{Fore.BLUE}╚{'═' * 68}╝")
 
 # Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
 def get_user_input(prompt_message):
