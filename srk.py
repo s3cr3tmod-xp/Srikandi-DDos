@@ -77,10 +77,10 @@ def countdown(t):
             time.sleep(1),
             print("")
             stdout.flush()
-            stdout.write(f"\r\033[48;5;7m\033[30m+Target-Url\033[0m* \033[38;5;39m{target_url} \033[38;5;111mRemaining_time: \033[37m{remaining_time:.2f}\033[0") 
+            stdout.write(f"\r\033[48;5;7m\033[30m+Target-Url\033[0m*  \033[38;5;39m{target_url} \033[38;5;111mRemaining_time: \033[37m{remaining_time:.2f}\033[0") 
             print("")
             stdout.flush()
-            stdout.write(f"\r\033[38;5;154m-Target-Url* \033[38;5;206m {target_url} \033[32mRemaining_time: \033[38;5;37m{remaining_time:.2f}")
+            stdout.write(f"\r\033[38;5;154m-Target-Url* \033[37m {target_url} \033[32mRemaining_time: \033[38;5;37m{remaining_time:.2f}")
         else:
             stdout.flush()
             stdout.write(f"\r{Fore.RED}[*]  {Fore.YELLOW}חודאירול אקשה    {Fore.CYAN}התקפה נעשתה!{' ' * 53}|\n")
