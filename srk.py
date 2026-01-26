@@ -40,7 +40,7 @@ def log_attack_status(message, level='info', print_to_terminal=True):
 # Fungsi untuk Menampilkan Header HUDAIRUL-AQSHA dengan Warna
 def display_header():
     header_lines = [
-    f"{Fore.BLUE}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
+    f"{Fore.BLUE}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
     f"{Fore.BLUE}▒▒██████╗▒██████╗▒▒██╗▒██╗▒▒▒██╗",
     f"{Fore.BLUE}▒▒██╔═══╝▒██╔══██╗▒██║▒██║▒▒██╔╝ ",
     f"{Fore.BLUE}▒▒██║▒▒▒▒▒██║▒▒██║▒██║▒██║▒██╔╝ ",
@@ -48,7 +48,7 @@ def display_header():
     f"{Fore.BLUE}▒▒╚═══██║▒██████╚╗▒██║▒██║▒██╚╗ ",
     f"{Fore.BLUE}▒▒██████║▒██╔══██║▒██║▒██║▒▒██╚╗  ",
     f"{Fore.BLUE}▒▒╚═════╝▒╚═╝▒▒╚═╝▒╚═╝▒╚═╝▒▒▒╚═╝ ",
-    f"{Fore.BLUE}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
+    f"{Fore.BLUE}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
     ]
 
     # Tampilkan header dengan warna
@@ -56,11 +56,11 @@ def display_header():
         print(line)
       
     # Versi dan URL
-    print(f"{Fore.BLUE}╔{'═' * 65}╗")
-    print(f"{Fore.BLUE}║\033[48;5;3m{' ' * 20}\033[37mAuthor: KunFz{' ' * 27} {Fore.BLUE}\033[0m║")
-    print(f"{Fore.BLUE}║\033[48;5;3m{' ' * 16}\033[37mAdm: Z'black 313{' ' * 47} {Fore.BLUE}\033[0m║")
-    print(f"{Fore.BLUE}║\033[48;5;3m{' ' * 16}\033[37mBlack-Army community{' ' * 47} {Fore.BLUE}\033[0m║")
-    print(f"{Fore.BLUE}╚{'═' * 65}╝")
+    print(f"{Fore.BLUE}╔{'═' * 67}╗")
+    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 28}\033[37mAuthor: KunFz{' ' * 28} {Fore.BLUE}\033[0m║")
+    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 25}\033[37mAdm: Z'black 313{' ' * 26} {Fore.BLUE}\033[0m║")
+    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 16}\033[37mBlack-Army community{' ' * 47} {Fore.BLUE}\033[0m║")
+    print(f"{Fore.BLUE}╚{'═' * 67}╝")
 
 # Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
 def get_user_input(prompt_message):
