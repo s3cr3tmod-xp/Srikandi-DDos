@@ -40,15 +40,15 @@ def log_attack_status(message, level='info', print_to_terminal=True):
 # Fungsi untuk Menampilkan Header HUDAIRUL-AQSHA dengan Warna
 def display_header():
     header_lines = [
-    f"{Fore.BLUE}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
-    f"{Fore.BLUE}▒▒█████╗",
-    f"{Fore.BLUE}▒▒██╔══╝",
-    f"{Fore.BLUE}▒▒██║",
-    f"{Fore.BLUE}▒▒█████╗",
-    f"{Fore.BLUE}▒▒╚══██║",
-    f"{Fore.BLUE}▒▒█████║",
-    f"{Fore.BLUE}▒▒╚════╝",
-    f"{Fore.BLUE} ▒▒▒▒═══╗▒▒▒▒╔═════╗▒▒▒╔════════╗▒▒╔════════╗▒╔═╗▒▒▒▒▒▒╔═╗▒▒▒▒╔═╗▒▒▒▒",
+    f"{Fore.BLUE}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
+    f"{Fore.BLUE}▒▒██████╗▒██████╗▒▒██╗▒██╗▒▒▒██╗",
+    f"{Fore.BLUE}▒▒██╔═══╝▒██╔══██╗▒██║▒██║▒▒██╔╝ ",
+    f"{Fore.BLUE}▒▒██║▒▒▒▒▒██║▒▒██║▒██║▒██║▒██╔╝ ",
+    f"{Fore.BLUE}▒▒██████╗▒██║▒▒██║▒██║▒██║██╔╝ ",
+    f"{Fore.BLUE}▒▒╚═══██║▒██████╚╗▒██║▒██║▒██╚╗ ",
+    f"{Fore.BLUE}▒▒██████║▒██╔══██║▒██║▒██║▒▒██╚╗  ",
+    f"{Fore.BLUE}▒▒╚═════╝▒╚═╝▒▒╚═╝▒╚═╝▒╚═╝▒▒▒╚═╝ ",
+    f"{Fore.BLUE}▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒",
     ]
 
     # Tampilkan header dengan warna
@@ -56,11 +56,11 @@ def display_header():
         print(line)
       
     # Versi dan URL
-    print(f"{Fore.CYAN}╔{'═' * 65}╗")
-    print(f"{Fore.CYAN}║{' ' * 20}Author: KunFz{' ' * 27}")
-    print(f"{Fore.CYAN}║{' ' * 16}Adm: Z'black 313{' ' * 47} ")
-    print(f"{Fore.CYAN}║{' ' * 16}Black-Army community{' ' * 47}")
-    print(f"{Fore.CYAN}╚{'═' * 65}╝")
+    print(f"{Fore.BLUE}╔{'═' * 65}╗")
+    print(f"{Fore.BLUE}║{' ' * 20}Author: KunFz{' ' * 27}")
+    print(f"{Fore.BLUE}║{' ' * 16}Adm: Z'black 313{' ' * 47} ")
+    print(f"{Fore.BLUE}║{' ' * 16}Black-Army community{' ' * 47}")
+    print(f"{Fore.BLUE}╚{'═' * 65}╝")
 
 # Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
 def get_user_input(prompt_message):
@@ -76,8 +76,8 @@ def countdown(t):
         if remaining_time > 1:
             time.sleep(1),
             stdout.flush()
-            stdout.write(f"\r{Fore.RED}* {Fore.BLUE}Executing target {Fore.YELLOW} {target_url}") 
-            print(f"\r{Fore.WHITE}* {Fore.CYAN} Remaining_time: {Fore.BLUE} {remaining_time:.2f}")
+            stdout.write(f"\r\033[48;5;7m\033[30m+Target-Url\033[0m* \033[38;5;39m{target_url} \033[38;5;111mRemaining_time: \033[37m{remaining_time:.2f}") 
+            print(f"\033[38;5;154m-Target-Url* \033[38;5;206m {target_url} \033[32mRemaining_time: \033[38;5;37m{remaining_time:.2f}")
         else:
             stdout.flush()
             stdout.write(f"\r{Fore.RED}|  [*]  {Fore.YELLOW}חודאירול אקשה    {Fore.CYAN}התקפה נעשתה!{' ' * 53}|\n")
