@@ -78,11 +78,12 @@ def countdown(t):
             print("")
             stdout.flush()
             stdout.write(f"\r\033[48;5;7m\033[30m+Target-Url\033[0m* \033[38;5;39m{target_url} \033[38;5;111mRemaining_time: \033[37m{remaining_time:.2f}\033[0") 
+            print("")
             stdout.flush()
             stdout.write(f"\r\033[38;5;154m-Target-Url* \033[38;5;206m {target_url} \033[32mRemaining_time: \033[38;5;37m{remaining_time:.2f}")
         else:
             stdout.flush()
-            stdout.write(f"\r{Fore.RED}|  [*]  {Fore.YELLOW}חודאירול אקשה    {Fore.CYAN}התקפה נעשתה!{' ' * 53}|\n")
+            stdout.write(f"\r{Fore.RED}[*]  {Fore.YELLOW}חודאירול אקשה    {Fore.CYAN}התקפה נעשתה!{' ' * 53}|\n")
             print(f"{Fore.CYAN}|{'=' * 74}|")
             return
 
@@ -98,7 +99,7 @@ def get_target(url):
         'scheme': urlparse(url).scheme,
         'port': urlparse(url).netloc.split(":")[1] if ":" in urlparse(url).netloc else ("443" if urlparse(url).scheme == "https" else "80")
     }
-    log_attack_status(f"Target acquired:{target['host']} ({target['scheme']}://{target['host']}:{target['port']}{target['uri']})")
+    log_attack_status(f"Target acquired:{target['host']}({target['scheme']}://{target['host']}:{target['port']}{target['uri']})")
     return target
 
 # Fungsi Serangan Utama
