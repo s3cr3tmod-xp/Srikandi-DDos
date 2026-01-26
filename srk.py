@@ -77,10 +77,10 @@ def countdown(t):
             time.sleep(1),
             print("")
             stdout.flush()
-            stdout.write(f"\r\033[48;5;7m\033[30mExecution target\033[0m  \033[38;5;39m{target_url} \033[33Remaining_time: \033[37m{remaining_time:.2f}\033[0") 
+            stdout.write(f"\r\033[48;5;3m\033[30mExecution target\033[0m  \033[38;5;39m{target_url} \033[33Remaining_time: \033[37m{remaining_time:.2f}\033[0") 
             print("")
             stdout.flush()
-            stdout.write(f"\r\033[38;5;154m-Execution target \033[37m {target_url} \033[32mRemaining_time: \033[38;5;37m{remaining_time:.2f}")
+            stdout.write(f"\r\033[38;5;154mExecution target \033[37m {target_url} \033[32mRemaining_time: \033[38;5;37m{remaining_time:.2f}")
         else:
             stdout.flush()
             stdout.write(f"\r{Fore.RED}[*]  {Fore.YELLOW}חודאירול אקשה    {Fore.CYAN}התקפה נעשתה!{' ' * 53}|\n")
@@ -118,11 +118,11 @@ if __name__ == "__main__":
     attemps = 0
     while attemps < 100:
        print("\033[38;5;39m┏━━━━━━━⬣")
-       username = input("\033[38;5;39m┗> Enter your username: \033[32m")
+       username = input("\033[38;5;39m┗> Enter your username: \033[30m")
        print("\033[38;5;39m┏━━━━━━━⬣")
-       password = input("\033[38;5;39m┗> Enter your password: \033[32m")
+       password = input("\033[38;5;39m┗> Enter your password: \033[30m")
        print("\033[104m\033[0m")
-       if username == 'srk313' and password == 'srk313':
+       if username == '12345' and password == '12345':
            print("\033[7m•••>       SRIKANDI BLACK ARMY\033[0m")
            print(f"{Fore.BLUE}┏━━━━━━━⬣")
            break
