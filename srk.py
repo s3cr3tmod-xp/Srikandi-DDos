@@ -57,9 +57,9 @@ def display_header():
       
     # Versi dan URL
     print(f"{Fore.BLUE}╔{'═' * 68}╗")
-    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 27}\033[38;5;206mAuthor: KunFz{' ' * 27} {Fore.BLUE}\033[0m║")
-    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 25}\033[38;5;206mAdm: Z'black 313{' ' * 26} {Fore.BLUE}\033[0m║")
-    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 20}\033[38;5;206mCan be used but not shared{' ' * 21} {Fore.BLUE}\033[0m║")
+    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 22}\033[30mA u t h o r :  K u n F z{' ' * 21} {Fore.BLUE}\033[0m║")
+    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 19}\033[30mA d m :  Z' b l a c k  3 1 3{' ' * 20} {Fore.BLUE}\033[0m║")
+    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 10}\033[30mC a n  b e  u s e d  b u t  n o t  s h a r e d{' ' * 11} {Fore.BLUE}\033[0m║")
     print(f"{Fore.BLUE}╚{'═' * 68}╝")
 
 # Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
