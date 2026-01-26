@@ -59,7 +59,7 @@ def display_header():
     print(f"{Fore.BLUE}╔{'═' * 67}╗")
     print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 28}\033[37mAuthor: KunFz{' ' * 28} {Fore.BLUE}\033[0m║")
     print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 25}\033[37mAdm: Z'black 313{' ' * 26} {Fore.BLUE}\033[0m║")
-    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 16}\033[37mBlack-Army community{' ' * 47} {Fore.BLUE}\033[0m║")
+    print(f"{Fore.BLUE}║\033[48;5;4m{' ' * 20}\033[37mCan be used but not shared{' ' * 21} {Fore.BLUE}\033[0m║")
     print(f"{Fore.BLUE}╚{'═' * 67}╝")
 
 # Fungsi untuk Meminta Input dari Pengguna dengan Tampilan Rapi
