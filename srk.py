@@ -75,6 +75,7 @@ def countdown(t):
         remaining_time = (until - datetime.datetime.now()).total_seconds()
         if remaining_time > 1:
             time.sleep(1),
+            print("")
             stdout.flush()
             stdout.write(f"\r\033[48;5;7m\033[30m+Target-Url\033[0m* \033[38;5;39m{target_url} \033[38;5;111mRemaining_time: \033[37m{remaining_time:.2f}\033[0") 
             stdout.flush()
@@ -105,7 +106,7 @@ def launch_attack(target_url, duration):
     target = get_target(target_url)
 
     # Inisialisasi Serangan dan Waktu Serangan
-    log_attack_status(f"Meluncurkan serangan ke {target['host']} untuk {duration} detik...")
+    log_attack_status(f"Launching an attack on {target['host']} for {duration} second...")
     countdown(duration)
 
 if __name__ == "__main__":
@@ -131,7 +132,7 @@ if __name__ == "__main__":
       
     target_url = get_user_input("Enter the target url:   ")
     while not validators.url(target_url):
-        print(f"{Fore.RED}|[ERROR] URL tidak valid. Coba lagi.{' ' * 37}|")
+        print(f"{Fore.RED}|[ERROR] URL invalid. Try again.{' ' * 37}|")
         print(f"{Fore.CYAN}|{'=' * 74}|")
         target_url = get_user_input("  Server URL:")
 
